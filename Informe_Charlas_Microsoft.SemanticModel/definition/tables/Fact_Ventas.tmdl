@@ -1,0 +1,123 @@
+table Fact_Ventas
+	lineageTag: 0eb4fa84-ac5f-419c-ad76-530138f12ce8
+
+	column IdFecha
+		dataType: int64
+		formatString: 0
+		lineageTag: c1cb073e-9b0d-48c0-b242-5a1b3218c976
+		summarizeBy: none
+		sourceColumn: IdFecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdComprador
+		dataType: int64
+		formatString: 0
+		lineageTag: 679b5126-29ae-4d9d-9525-a2e644e6b561
+		summarizeBy: none
+		sourceColumn: IdComprador
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdPais
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c183621-ba12-4ff2-a522-02987611e015
+		summarizeBy: none
+		sourceColumn: IdPais
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdProducto
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b9550aa-670e-4e0b-9a6b-6518a514b0af
+		summarizeBy: none
+		sourceColumn: IdProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdDescuento
+		dataType: int64
+		formatString: 0
+		lineageTag: b197dc7e-0211-4b32-9b48-3f3d8391887a
+		summarizeBy: none
+		sourceColumn: IdDescuento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unidades_Vendidas
+		dataType: string
+		lineageTag: c037adfd-6da4-468f-9b93-cc9c992adc33
+		summarizeBy: none
+		sourceColumn: Unidades_Vendidas
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precio_por_Unidad
+		dataType: string
+		lineageTag: 41ff093e-f2ac-4d13-ac5a-6c8bc07b34f7
+		summarizeBy: none
+		sourceColumn: Precio_por_Unidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precio_de_Venta
+		dataType: string
+		lineageTag: 445ed92f-ba02-4dd4-b102-962a8ef6232d
+		summarizeBy: none
+		sourceColumn: Precio_de_Venta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ventas_Brutas
+		dataType: string
+		lineageTag: 4437488d-69c2-4682-b065-5ad2a730f381
+		summarizeBy: none
+		sourceColumn: Ventas_Brutas
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descuento_Applicado
+		dataType: string
+		lineageTag: 6166743f-4c90-4c21-a283-1cfceb411501
+		summarizeBy: none
+		sourceColumn: Descuento_Applicado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ventas_Netas
+		dataType: string
+		lineageTag: f0c62a48-defc-4a6e-ac8f-e5898c064242
+		summarizeBy: none
+		sourceColumn: Ventas_Netas
+
+		annotation SummarizationSetBy = Automatic
+
+	column Costos
+		dataType: string
+		lineageTag: 98502c2e-03c7-49cd-8090-447c4b51aee4
+		summarizeBy: none
+		sourceColumn: Costos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Beneficios
+		dataType: string
+		lineageTag: f0c2947c-6f90-45af-ba1f-5f6e543b1592
+		summarizeBy: none
+		sourceColumn: Beneficios
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Ventas = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("v76bleknvgyubi52wbrmqbkv4a-u7vqohmqg5xudjslv3qlknh2wy.datawarehouse.fabric.microsoft.com", "Lk_Oro"),
+				    dbo_Fact_Ventas = Origen{[Schema="dbo",Item="Fact_Ventas"]}[Data]
+				in
+				    dbo_Fact_Ventas
+
+	annotation PBI_ResultType = Table
+

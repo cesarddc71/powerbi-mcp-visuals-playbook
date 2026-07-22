@@ -1,0 +1,31 @@
+table DimProducto
+	lineageTag: 27c6c34d-a39a-4a97-bf94-49d9e1c5d515
+
+	column Producto
+		dataType: string
+		lineageTag: ae215bc8-4737-4af6-a573-26644ec4d158
+		summarizeBy: none
+		sourceColumn: Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdProducto
+		dataType: int64
+		formatString: 0
+		lineageTag: 93060d43-51a2-46ae-81d4-b07c20f99b65
+		summarizeBy: none
+		sourceColumn: IdProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProducto = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("v76bleknvgyubi52wbrmqbkv4a-u7vqohmqg5xudjslv3qlknh2wy.datawarehouse.fabric.microsoft.com", "Lk_Oro"),
+				    dbo_DimProducto = Origen{[Schema="dbo",Item="DimProducto"]}[Data]
+				in
+				    dbo_DimProducto
+
+	annotation PBI_ResultType = Table
+

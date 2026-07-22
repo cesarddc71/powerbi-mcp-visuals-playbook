@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "1efce78ed5178b09d647",
+  "position": {
+    "x": 94.777864380358523,
+    "y": 267.373343725643,
+    "z": 0,
+    "height": 443.95946999220575,
+    "width": 545.72096648480124,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Ventas"
+                    }
+                  },
+                  "Property": "Descuento_Applicado"
+                }
+              },
+              "queryRef": "Fact_Ventas.Descuento_Applicado",
+              "nativeQueryRef": "Descuento_Applicado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimTipoDescuento"
+                    }
+                  },
+                  "Property": "Tipo_de_Descuento"
+                }
+              },
+              "queryRef": "DimTipoDescuento.Tipo_de_Descuento",
+              "nativeQueryRef": "Tipo_de_Descuento"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3d492c035e11f7ad9c50",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Ventas"
+              }
+            },
+            "Property": "Descuento_Applicado"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "57e958d69a7b374445f1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimTipoDescuento"
+              }
+            },
+            "Property": "Tipo_de_Descuento"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

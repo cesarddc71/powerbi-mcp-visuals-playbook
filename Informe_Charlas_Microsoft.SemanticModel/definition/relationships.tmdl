@@ -1,0 +1,20 @@
+relationship AutoDetected_e3ed49ce-597a-428d-a995-872f90af7fd5
+	fromColumn: Fact_Ventas.IdComprador
+	toColumn: DimComprador.IdComprador
+
+relationship AutoDetected_0f13cd3d-8a41-4738-b3d1-723e1f1ef022
+	fromColumn: Fact_Ventas.IdFecha
+	toColumn: DimFecha.IdFecha
+
+relationship AutoDetected_bc9a8b54-1723-4b52-8914-3e002e918cf4
+	fromColumn: Fact_Ventas.IdPais
+	toColumn: DimPais.IdPais
+
+relationship AutoDetected_1082712d-349d-4288-8d40-d5d40d581d98
+	fromColumn: Fact_Ventas.IdProducto
+	toColumn: DimProducto.IdProducto
+
+relationship AutoDetected_6d603b43-03f2-46bf-9d73-686153e76b4e
+	fromColumn: Fact_Ventas.IdDescuento
+	toColumn: DimTipoDescuento.IdDescuento
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Informe_Charlas_Microsoft"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7f211ee1-2f6c-4a1f-be18-fb6d58858595"
+  }
+}

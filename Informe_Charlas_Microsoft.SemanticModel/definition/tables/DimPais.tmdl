@@ -1,0 +1,31 @@
+table DimPais
+	lineageTag: 0f9c3a9e-fcd7-4a61-ab3c-558ff536c3b2
+
+	column Pais
+		dataType: string
+		lineageTag: fabc2300-4a3e-401d-af52-6d9b7c2f5a89
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdPais
+		dataType: int64
+		formatString: 0
+		lineageTag: 71b9cd7a-f40b-4c16-987a-b942aab4d7e3
+		summarizeBy: none
+		sourceColumn: IdPais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPais = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("v76bleknvgyubi52wbrmqbkv4a-u7vqohmqg5xudjslv3qlknh2wy.datawarehouse.fabric.microsoft.com", "Lk_Oro"),
+				    dbo_DimPais = Origen{[Schema="dbo",Item="DimPais"]}[Data]
+				in
+				    dbo_DimPais
+
+	annotation PBI_ResultType = Table
+

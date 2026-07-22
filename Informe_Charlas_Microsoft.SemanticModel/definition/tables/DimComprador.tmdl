@@ -1,0 +1,31 @@
+table DimComprador
+	lineageTag: 928d0da1-dcb0-4ab9-abc1-4f99d9069a05
+
+	column Comprador
+		dataType: string
+		lineageTag: 0da08039-0417-4dce-946b-5ee7d837a550
+		summarizeBy: none
+		sourceColumn: Comprador
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdComprador
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b06ac1c-1b4b-43e6-9529-acd67a0a1ce6
+		summarizeBy: none
+		sourceColumn: IdComprador
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimComprador = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("v76bleknvgyubi52wbrmqbkv4a-u7vqohmqg5xudjslv3qlknh2wy.datawarehouse.fabric.microsoft.com", "Lk_Oro"),
+				    dbo_DimComprador = Origen{[Schema="dbo",Item="DimComprador"]}[Data]
+				in
+				    dbo_DimComprador
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,23 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DimComprador","DimFecha","DimPais","DimProducto","DimTipoDescuento","Fact_Ventas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DimComprador
+ref table DimFecha
+ref table DimPais
+ref table DimProducto
+ref table DimTipoDescuento
+ref table Fact_Ventas
+
+ref cultureInfo es-ES
+

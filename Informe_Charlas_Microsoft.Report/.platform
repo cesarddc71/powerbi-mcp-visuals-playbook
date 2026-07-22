@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Informe_Charlas_Microsoft"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7019e21a-2b3c-4dea-b61c-9550489efebd"
+  }
+}

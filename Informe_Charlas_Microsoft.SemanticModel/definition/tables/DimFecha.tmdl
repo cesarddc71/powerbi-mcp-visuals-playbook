@@ -1,0 +1,67 @@
+table DimFecha
+	lineageTag: 43186d74-9824-4421-bcc4-6fa163bed6bc
+
+	column Fecha
+		dataType: string
+		lineageTag: 8345d193-5085-463d-b137-cd798a09f7dd
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdFecha
+		dataType: int64
+		formatString: 0
+		lineageTag: eb3414f6-3cbc-492b-9817-6f075f1e2778
+		summarizeBy: none
+		sourceColumn: IdFecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d3cfa8e-11e2-49f8-848e-99ca21704e72
+		summarizeBy: none
+		sourceColumn: Año
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: ddf7b829-c971-458d-a309-8e149b2d0536
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: f7724ff8-7fbd-4b27-84ca-20a8a233b9bc
+		summarizeBy: none
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: deec5434-299e-48f9-9208-432453db2c88
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFecha = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("v76bleknvgyubi52wbrmqbkv4a-u7vqohmqg5xudjslv3qlknh2wy.datawarehouse.fabric.microsoft.com", "Lk_Oro"),
+				    dbo_DimFecha = Origen{[Schema="dbo",Item="DimFecha"]}[Data]
+				in
+				    dbo_DimFecha
+
+	annotation PBI_ResultType = Table
+

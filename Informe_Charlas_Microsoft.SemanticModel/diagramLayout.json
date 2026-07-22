@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 72.800003051757813
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 618.4288640496145,
+            "y": 521.915688853607
+          },
+          "nodeIndex": "DimComprador",
+          "nodeLineageTag": "928d0da1-dcb0-4ab9-abc1-4f99d9069a05",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 243.42870228590402,
+            "y": -50
+          },
+          "nodeIndex": "DimFecha",
+          "nodeLineageTag": "43186d74-9824-4421-bcc4-6fa163bed6bc",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.43403045341711,
+            "y": 84.656142877362527
+          },
+          "nodeIndex": "DimPais",
+          "nodeLineageTag": "0f9c3a9e-fcd7-4a61-ab3c-558ff536c3b2",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 304.09996255526357
+          },
+          "nodeIndex": "DimProducto",
+          "nodeLineageTag": "27c6c34d-a39a-4a97-bf94-49d9e1c5d515",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 281.15268309816577,
+            "y": 680.59113238605357
+          },
+          "nodeIndex": "DimTipoDescuento",
+          "nodeLineageTag": "c77b83fc-4720-4657-a122-3a48a7772669",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 361.23894741999396,
+            "y": 303.24499275658286
+          },
+          "nodeIndex": "Fact_Ventas",
+          "nodeLineageTag": "0eb4fa84-ac5f-419c-ad76-530138f12ce8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

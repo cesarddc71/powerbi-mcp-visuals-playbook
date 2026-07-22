@@ -1,0 +1,31 @@
+table DimTipoDescuento
+	lineageTag: c77b83fc-4720-4657-a122-3a48a7772669
+
+	column Tipo_de_Descuento
+		dataType: string
+		lineageTag: dfd17e4b-3580-454d-938d-c54ab03e6cbb
+		summarizeBy: none
+		sourceColumn: Tipo_de_Descuento
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdDescuento
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cfe819e-f665-430f-be52-e3f642b7c20e
+		summarizeBy: none
+		sourceColumn: IdDescuento
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimTipoDescuento = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("v76bleknvgyubi52wbrmqbkv4a-u7vqohmqg5xudjslv3qlknh2wy.datawarehouse.fabric.microsoft.com", "Lk_Oro"),
+				    dbo_DimTipoDescuento = Origen{[Schema="dbo",Item="DimTipoDescuento"]}[Data]
+				in
+				    dbo_DimTipoDescuento
+
+	annotation PBI_ResultType = Table
+
