@@ -1,6 +1,10 @@
 table Fact_Ventas
 	lineageTag: 0eb4fa84-ac5f-419c-ad76-530138f12ce8
 
+	measure Medida = SUM(Fact_Ventas[Precio_por_Unidad])
+		formatString: 0
+		lineageTag: 5796539d-56cb-4cc2-bd1e-a5d934901e94
+
 	column IdFecha
 		dataType: int64
 		formatString: 0
@@ -55,10 +59,13 @@ table Fact_Ventas
 		annotation SummarizationSetBy = Automatic
 
 	column Precio_por_Unidad
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 41ff093e-f2ac-4d13-ac5a-6c8bc07b34f7
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Precio_por_Unidad
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 
