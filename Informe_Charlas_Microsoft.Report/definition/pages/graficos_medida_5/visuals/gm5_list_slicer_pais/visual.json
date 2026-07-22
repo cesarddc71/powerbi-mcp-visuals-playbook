@@ -29,8 +29,7 @@
               "queryRef": "DimPais.Pais",
               "nativeQueryRef": "Pais"
             }
-          ],
-          "active": true
+          ]
         }
       }
     },

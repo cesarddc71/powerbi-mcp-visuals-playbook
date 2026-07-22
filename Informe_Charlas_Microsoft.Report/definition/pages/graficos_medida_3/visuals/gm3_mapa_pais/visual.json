@@ -13,7 +13,7 @@
     "visualType": "azureMap",
     "query": {
       "queryState": {
-        "Category": {
+        "Location": {
           "projections": [
             {
               "field": {
