@@ -1,2 +1,9 @@
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
+**/.pbi/**/cache.*
+**/.pbi/**/localSettings.json
+*.bak
+*.tmp
+*.log
+*.pbix
+*.pbit
