@@ -31,6 +31,24 @@
               "active": true
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Ventas"
+                    }
+                  },
+                  "Property": "Medida"
+                }
+              },
+              "queryRef": "Fact_Ventas.Medida",
+              "nativeQueryRef": "Medida"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -230,7 +248,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Costos por mes'"
+                  "Value": "'Medida por mes'"
                 }
               }
             },

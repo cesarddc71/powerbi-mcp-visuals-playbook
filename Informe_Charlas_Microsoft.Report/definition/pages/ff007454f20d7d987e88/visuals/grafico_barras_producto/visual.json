@@ -34,6 +34,24 @@
         },
         "Legend": {
           "projections": []
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Ventas"
+                    }
+                  },
+                  "Property": "Medida"
+                }
+              },
+              "queryRef": "Fact_Ventas.Medida",
+              "nativeQueryRef": "Medida"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -220,7 +238,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Ventas netas por producto'"
+                  "Value": "'Medida por producto'"
                 }
               }
             },
