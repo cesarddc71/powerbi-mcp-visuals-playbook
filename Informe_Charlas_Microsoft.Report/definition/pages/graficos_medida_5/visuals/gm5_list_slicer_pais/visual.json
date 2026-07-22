@@ -10,14 +10,14 @@
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "listSlicer",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "DimPais"

@@ -10,14 +10,14 @@
     "tabOrder": 1
   },
   "visual": {
-    "visualType": "advancedSlicerVisual",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "DimProducto"

@@ -10,10 +10,10 @@
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "cardNew",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Fields": {
+        "Values": {
           "projections": [
             {
               "field": {
