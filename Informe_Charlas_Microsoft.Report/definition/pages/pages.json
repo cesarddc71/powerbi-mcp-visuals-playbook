@@ -1,7 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
   "pageOrder": [
-    "ff007454f20d7d987e88"
+    "ff007454f20d7d987e88",
+    "graficos_medida_1",
+    "graficos_medida_2",
+    "graficos_medida_3",
+    "graficos_medida_4",
+    "graficos_medida_5"
   ],
   "activePageName": "ff007454f20d7d987e88"
 }
