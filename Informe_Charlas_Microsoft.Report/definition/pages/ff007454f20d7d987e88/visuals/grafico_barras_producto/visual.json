@@ -39,14 +39,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
+                      "Schema": "extension",
                       "Entity": "Fact_Ventas"
                     }
                   },
-                  "Property": "Ventas_Netas"
+                  "Property": "Total Ventas Netas"
                 }
               },
-              "queryRef": "Fact_Ventas.Ventas_Netas",
-              "nativeQueryRef": "Ventas_Netas"
+              "queryRef": "Fact_Ventas.Total Ventas Netas",
+              "nativeQueryRef": "Total Ventas Netas"
             }
           ]
         },

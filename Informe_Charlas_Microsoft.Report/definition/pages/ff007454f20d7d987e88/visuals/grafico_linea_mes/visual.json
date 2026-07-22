@@ -39,14 +39,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
+                      "Schema": "extension",
                       "Entity": "Fact_Ventas"
                     }
                   },
-                  "Property": "Costos"
+                  "Property": "Total Costos"
                 }
               },
-              "queryRef": "Fact_Ventas.Costos",
-              "nativeQueryRef": "Costos"
+              "queryRef": "Fact_Ventas.Total Costos",
+              "nativeQueryRef": "Total Costos"
             }
           ]
         }

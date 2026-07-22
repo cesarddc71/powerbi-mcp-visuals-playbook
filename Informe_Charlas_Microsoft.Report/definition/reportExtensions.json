@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/reportExtension/1.0.0/schema.json",
+  "name": "extension",
+  "entities": [
+    {
+      "name": "Fact_Ventas",
+      "measures": [
+        {
+          "name": "Total Ventas Netas",
+          "dataType": "Double",
+          "expression": "SUMX('Fact_Ventas', IFERROR(NUMBERVALUE('Fact_Ventas'[Ventas_Netas], \".\", \",\"), BLANK()))",
+          "formatString": "#,0.00"
+        },
+        {
+          "name": "Total Costos",
+          "dataType": "Double",
+          "expression": "SUMX('Fact_Ventas', IFERROR(NUMBERVALUE('Fact_Ventas'[Costos], \".\", \",\"), BLANK()))",
+          "formatString": "#,0.00"
+        }
+      ]
+    }
+  ]
+}
