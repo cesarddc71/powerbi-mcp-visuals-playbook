@@ -7,14 +7,14 @@ Esta guia resume el flujo usado para crear paginas y visuales en el informe loca
 Ruta del reporte:
 
 ```text
-C:\Users\vicen\Desktop\Prueba_MCPVISUAL\Informe_Charlas_Microsoft.Report
+.\Informe_Charlas_Microsoft.Report
 ```
 
 Primero se inspecciona la pagina activa:
 
 ```json
 {
-  "report_path": "C:\\Users\\vicen\\Desktop\\Prueba_MCPVISUAL\\Informe_Charlas_Microsoft.Report",
+  "report_path": ".\\Informe_Charlas_Microsoft.Report",
   "page_name": "ff007454f20d7d987e88"
 }
 ```
@@ -64,7 +64,7 @@ Ejemplo:
 
 ```json
 {
-  "report_path": "C:\\Users\\vicen\\Desktop\\Prueba_MCPVISUAL\\Informe_Charlas_Microsoft.Report",
+  "report_path": ".\\Informe_Charlas_Microsoft.Report",
   "name": "graficos_medida_1",
   "display_name": "Graficos Medida 1",
   "width": 1280,
@@ -84,7 +84,7 @@ Ejemplo de grafico de linea:
 
 ```json
 {
-  "report_path": "C:\\Users\\vicen\\Desktop\\Prueba_MCPVISUAL\\Informe_Charlas_Microsoft.Report",
+  "report_path": ".\\Informe_Charlas_Microsoft.Report",
   "page_name": "graficos_medida_1",
   "visual_type": "lineChart",
   "name": "gm1_linea_mes",
@@ -107,12 +107,12 @@ Ejemplo correcto:
 
 ```json
 {
-  "report_path": "C:\\Users\\vicen\\Desktop\\Prueba_MCPVISUAL\\Informe_Charlas_Microsoft.Report",
+  "report_path": ".\\Informe_Charlas_Microsoft.Report",
   "page_name": "graficos_medida_1",
   "visual_name": "gm1_linea_mes",
   "bindings": [
-    { "role": "Category", "field": "DimFecha[Mes]" },
-    { "role": "Y", "field": "Fact_Ventas[Medida]" }
+    { "role": "Category", "field": "DimFecha[Mes]", "field_type": "Column" },
+    { "role": "Y", "field": "Fact_Ventas[Medida]", "field_type": "Measure" }
   ]
 }
 ```
@@ -135,7 +135,7 @@ Ejemplo:
 
 ```json
 {
-  "report_path": "C:\\Users\\vicen\\Desktop\\Prueba_MCPVISUAL\\Informe_Charlas_Microsoft.Report",
+  "report_path": ".\\Informe_Charlas_Microsoft.Report",
   "page_name": "graficos_medida_1",
   "visual_name": "gm1_linea_mes",
   "title": "Medida por mes",
@@ -185,4 +185,3 @@ Cerrar Power BI Desktop antes de editar PBIR. Despues de validar, abrir:
 ```text
 Informe_Charlas_Microsoft.pbip
 ```
-

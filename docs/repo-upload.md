@@ -24,9 +24,11 @@ pbir validate 'Informe_Charlas_Microsoft.Report'
 ## 3. Preparar commit
 
 ```powershell
-git add README.md docs scripts .gitignore Informe_Charlas_Microsoft.pbip Informe_Charlas_Microsoft.Report Informe_Charlas_Microsoft.SemanticModel
+git add README.md docs scripts mcp-server .gitignore Informe_Charlas_Microsoft.pbip Informe_Charlas_Microsoft.Report Informe_Charlas_Microsoft.SemanticModel
 git commit -m "Add Power BI MCP visuals playbook"
 ```
+
+`mcp-server/` contiene el servidor MCP real. Sin esa carpeta el repo solo conserva la documentacion y el informe de ejemplo.
 
 ## 4. Crear repo remoto
 
@@ -66,4 +68,3 @@ git push -u origin main
 git status
 git remote -v
 ```
-

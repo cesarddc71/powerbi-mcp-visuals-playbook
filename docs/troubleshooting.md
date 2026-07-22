@@ -2,6 +2,10 @@
 
 Errores reales encontrados durante la generacion de visuales y como evitarlos.
 
+Nota: el servidor incluido en `mcp-server/` ya incorpora correcciones para los
+casos principales: deteccion Column/Measure desde TMDL, limpieza de `active`
+mal ubicado y roles actualizados para `donutChart`, `gauge` y `azureMap`.
+
 ## Error: "Este campo se elimino del modelo"
 
 Causa:
@@ -106,4 +110,3 @@ pbir validate 'Informe_Charlas_Microsoft.Report'
 - Validar despues de cada lote de cambios.
 - Cerrar Power BI Desktop antes de editar PBIR.
 - Reabrir el `.pbip` despues de editar; no guardar una sesion abierta con errores.
-

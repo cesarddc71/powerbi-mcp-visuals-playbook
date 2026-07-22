@@ -1,12 +1,14 @@
 # Instalar y reutilizar el MCP de Power BI Visuals
 
-Este documento explica que necesitas para usar el flujo de trabajo con `mcp__powerbi_visuals` en otro equipo o repo.
+Este repo ahora incluye el servidor MCP real en `mcp-server/`. Eso permite que otra persona clone el repo, instale el paquete Python local y registre el MCP en su host de Codex.
 
 ## Que contiene este repo
 
-Este repo contiene un proyecto PBIP/PBIR, documentacion, ejemplos de uso y scripts de validacion.
-
-No contiene el servidor MCP en si. El MCP `mcp__powerbi_visuals` es una herramienta externa que debe estar disponible en tu entorno de Codex o en el entorno donde ejecutes el agente.
+- `mcp-server/`: codigo fuente del servidor MCP `mcp_visuales_avanzado`.
+- `Informe_Charlas_Microsoft.Report`: ejemplo PBIR con visuales creados/ajustados.
+- `Informe_Charlas_Microsoft.SemanticModel`: modelo TMDL usado por el ejemplo.
+- `docs/`: guias de uso, troubleshooting y prompts.
+- `scripts/Validate-PBIRVisuals.ps1`: validacion local de PBIR.
 
 ## Requisitos locales
 
@@ -15,29 +17,60 @@ Instala o verifica:
 - Power BI Desktop.
 - Git.
 - Python 3.10 o superior.
-- `pbir` CLI opcional, recomendado.
-- Acceso a Codex con el MCP `mcp__powerbi_visuals` habilitado.
+- Acceso a Codex o a otro host que soporte MCP por `stdio`.
+- `pbir` CLI opcional, recomendado para validar.
 
-Comprobar Git:
+Comprobar Git y Python:
 
 ```powershell
 git --version
-```
-
-Comprobar Python:
-
-```powershell
 python --version
 ```
 
-Instalar `pbir`:
+Instalar `pbir` si quieres validacion adicional:
 
 ```powershell
 python -m pip install pbir-cli
 pbir --version
 ```
 
-## Verificar si el MCP esta disponible
+## Clonar e instalar el MCP
+
+```powershell
+git clone https://github.com/vicente2121/powerbi-mcp-visuals-playbook.git
+cd powerbi-mcp-visuals-playbook
+python -m pip install -e .\mcp-server
+```
+
+Con extras para preview HTML y sincronizacion opcional con Desktop:
+
+```powershell
+python -m pip install -e ".\mcp-server[preview,reload]"
+```
+
+## Registrar el MCP en Codex
+
+En la configuracion local de Codex, anade un servidor MCP como este. Cambia `cwd` por la ruta real donde clonaste el repo:
+
+```toml
+[mcp_servers.powerbi_visuals]
+command = "python"
+args = ["-m", "mcp_visuales_avanzado.server"]
+cwd = 'C:\ruta\al\powerbi-mcp-visuals-playbook\mcp-server'
+enabled = true
+startup_timeout_sec = 20.0
+tool_timeout_sec = 120.0
+```
+
+Despues reinicia Codex. El namespace esperado es:
+
+```text
+mcp__powerbi_visuals
+```
+
+No subas archivos de configuracion personal con tokens, rutas privadas o credenciales.
+
+## Verificar que funciona
 
 En una sesion de Codex, pide:
 
@@ -45,14 +78,15 @@ En una sesion de Codex, pide:
 Tienes disponible el MCP mcp__powerbi_visuals? Lista sus herramientas.
 ```
 
-O pide una accion segura:
+O prueba una accion segura:
 
 ```text
 Usa mcp__powerbi_visuals para listar las paginas del reporte PBIR local.
 ```
 
-Si esta disponible, deberias ver herramientas como:
+Herramientas esperadas:
 
+- `set_project_context`
 - `list_pages`
 - `describe_page`
 - `create_page`
@@ -61,67 +95,45 @@ Si esta disponible, deberias ver herramientas como:
 - `set_visual_container`
 - `validate_report_structure`
 
-## Si el MCP no aparece
+## Usarlo con cualquier informe PBIP/PBIR
 
-El repo no puede instalar automaticamente un MCP que pertenece al entorno del agente. Necesitas habilitarlo en Codex o en tu host MCP.
-
-Checklist:
-
-1. Confirma que el entorno soporta MCP.
-2. Instala o registra el servidor MCP de Power BI Visuals segun las instrucciones de tu organizacion.
-3. Reinicia Codex o la sesion del agente.
-4. Verifica que aparezca el namespace:
+1. Clona este repo e instala `mcp-server/`.
+2. Abre tu informe `.pbip` en Power BI Desktop y guardalo.
+3. Cierra Power BI Desktop antes de editar PBIR desde el MCP.
+4. En Codex, establece contexto:
 
 ```text
-mcp__powerbi_visuals
+set_project_context(path="C:\ruta\a\MiInforme.pbip")
 ```
 
-Ejemplo generico de configuracion MCP, solo como referencia:
+5. Crea paginas, visuales, filtros y estilos con `mcp__powerbi_visuals`.
+6. Valida:
 
-```toml
-[mcp_servers.powerbi_visuals]
-command = "<ruta-o-comando-del-servidor-mcp>"
-args = ["--transport", "stdio"]
+```text
+validate_report_structure(full=true)
 ```
 
-No subas archivos de configuracion personal con tokens, rutas privadas o credenciales.
+7. Reabre el `.pbip` en Power BI Desktop.
 
-## Instalar este playbook en otro equipo
+## Bindings seguros
 
-Clonar repo:
+El MCP incluido intenta detectar si un campo es `Column` o `Measure` leyendo el modelo TMDL local. Si el modelo no esta junto al informe, fuerza el tipo en el binding:
 
-```powershell
-git clone https://github.com/<usuario>/<repo>.git
-cd <repo>
+```text
+bind_visual(
+  page_name="overview",
+  visual_name="ventas_por_pais",
+  bindings=[
+    {"role": "category", "field": "DimPais[Pais]", "field_type": "Column"},
+    {"role": "value", "field": "Fact_Ventas[Medida]", "field_type": "Measure"}
+  ]
+)
 ```
 
-Validar los visuales:
+Buenas practicas:
 
-```powershell
-.\scripts\Validate-PBIRVisuals.ps1
-```
-
-Abrir el informe:
-
-```powershell
-Invoke-Item ".\Informe_Charlas_Microsoft.pbip"
-```
-
-## Flujo de reutilizacion
-
-1. Clona el repo.
-2. Abre el `.pbip` en Power BI Desktop.
-3. Guarda una copia si vas a experimentar.
-4. Cierra Power BI Desktop antes de modificar PBIR con MCP.
-5. Usa Codex con `mcp__powerbi_visuals`.
-6. Valida con `.\scripts\Validate-PBIRVisuals.ps1`.
-7. Reabre el `.pbip`.
-
-## Buenas practicas
-
-- Usa medidas explicitas para valores numericos.
 - Usa columnas de dimensiones solo como categorias, filas, columnas o segmentadores.
+- Usa medidas explicitas para valores numericos.
 - Evita visuales no estandar si no estan embebidos en el informe.
 - Valida despues de cada lote de cambios.
 - No guardes desde Desktop una sesion abierta con errores generados por PBIR externo.
-
