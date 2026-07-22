@@ -9,6 +9,7 @@ Este repo contiene:
 - `Informe_Charlas_Microsoft.SemanticModel`: modelo semantico TMDL.
 - `docs/`: pasos de uso, decisiones y errores conocidos.
 - `scripts/Validate-PBIRVisuals.ps1`: validacion local para evitar los bugs que aparecieron al generar visuales.
+- `.github/workflows/validate-pbir.yml`: validacion automatica opcional al subir a GitHub.
 
 ## Requisitos
 
@@ -43,6 +44,15 @@ pbir validate 'Informe_Charlas_Microsoft.Report'
 
 6. Reabrir el `.pbip` en Power BI Desktop.
 
+## Documentacion incluida
+
+- [Instalar y reutilizar el MCP](docs/install-and-reuse-mcp.md)
+- [Usar este repo con otro informe PBIP](docs/reuse-with-another-report.md)
+- [Recetas de prompts para Codex + MCP](docs/prompt-recipes.md)
+- [Guia de uso del MCP](docs/mcp-powerbi-visuals-usage.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Subir este proyecto a un repo](docs/repo-upload.md)
+
 ## Subir a GitHub
 
 Este workspace ya es un repo Git local. Ahora mismo no hay remoto configurado. Para subirlo:
@@ -68,4 +78,3 @@ git push -u origin main
 - En slicers, tablas y matrices, las dimensiones deben escribirse como `Column`, no como `Measure`.
 - En cards, gauges y ejes numericos conviene usar medidas explicitas.
 - Algunos tipos visuales que el MCP puede listar no estan disponibles en Desktop si no estan embebidos como custom visuals.
-
